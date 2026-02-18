@@ -11,7 +11,11 @@ const GRADES = [
     metrics: { response: "< 12h", accuracy: "99.2%", ctc: "Market Top" },
     color: "from-blue-400 to-cyan-400",
     glow: "shadow-blue-500/20",
-    description: "Fortune 500 & Unicorns with autonomous hiring pipelines."
+    description: "Fortune 500 & Unicorns with autonomous hiring pipelines.",
+    logos: [
+      { name: "Freepik", url: "https://cdn-front.freepik.com/favicons/favicon-96x96.png" },
+      { name: "Flaticon", url: "https://media.flaticon.com/dist/min/img/apple-icon-58x58.png" }
+    ]
   },
   {
     rank: "A",
@@ -19,7 +23,11 @@ const GRADES = [
     metrics: { response: "< 24h", accuracy: "96.5%", ctc: "Competitive" },
     color: "from-indigo-400 to-purple-400",
     glow: "shadow-indigo-500/20",
-    description: "Series B+ startups with verified digital footprints."
+    description: "Series B+ startups with verified digital footprints.",
+    logos: [
+      { name: "Clerk", url: "https://clerk.com/v2/favicon.ico" },
+      { name: "Supabase", url: "https://www.vectorlogo.zone/logos/supabase/supabase-icon.svg" }
+    ]
   },
   {
     rank: "B",
@@ -27,7 +35,11 @@ const GRADES = [
     metrics: { response: "< 48h", accuracy: "92.0%", ctc: "Standard" },
     color: "from-slate-400 to-slate-500",
     glow: "shadow-slate-500/20",
-    description: "Emerging companies undergoing identity synchronization."
+    description: "Emerging companies undergoing identity synchronization.",
+    logos: [
+      { name: "GitLab", url: "https://www.vectorlogo.zone/logos/gitlab/gitlab-icon.svg" },
+      { name: "DigitalOcean", url: "https://www.vectorlogo.zone/logos/digitalocean/digitalocean-icon.svg" }
+    ]
   }
 ];
 
@@ -82,7 +94,11 @@ const NeuralBackground = () => {
 
     setup();
     draw();
-    return () => cancelAnimationFrame(animationFrameId);
+    window.addEventListener('resize', setup);
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('resize', setup);
+    };
   }, []);
 
   return <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none opacity-30" />;
@@ -133,8 +149,25 @@ export default function EmployerGrades() {
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-400/20 to-transparent -translate-y-full group-hover:animate-[scan_4s_linear_infinite]" />
               
-              <div className={`text-7xl font-black bg-gradient-to-br ${grade.color} bg-clip-text text-transparent mb-6 italic tracking-tighter`}>
-                {grade.rank}
+              <div className="flex justify-between items-start mb-6">
+                <div className={`text-7xl font-black bg-gradient-to-br ${grade.color} bg-clip-text text-transparent italic tracking-tighter`}>
+                  {grade.rank}
+                </div>
+                
+                <div className="flex flex-wrap gap-2 justify-end max-w-[130px]">
+                  {grade.logos.map((logo, lIdx) => (
+                    <div 
+                      key={lIdx} 
+                      className="w-10 h-10 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center p-2 shadow-inner shadow-white/5 backdrop-blur-md"
+                    >
+                      <img 
+                        src={logo.url} 
+                        alt={logo.name} 
+                        className="w-full h-full object-contain" 
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
               
               <h3 className="text-2xl font-black text-white mb-2 uppercase tracking-tight">{grade.title}</h3>
@@ -166,23 +199,56 @@ export default function EmployerGrades() {
           ))}
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 bg-white/[0.02] border border-white/5 rounded-[3rem] backdrop-blur-3xl shadow-2xl">
-          {[
-            { label: "JD Accuracy", val: "98.4%", icon: <ShieldCheck size={14}/> },
-            { label: "Avg. Response", val: "< 12h", icon: <Activity size={14}/> },
-            { label: "Candidate Sat.", val: "4.8/5", icon: <Star size={14}/> },
-            { label: "Digital Footprint", val: "AI-V", icon: <Globe size={14}/> }
-          ].map((stat, i) => (
-            <div key={i} className={`text-center ${i !== 3 ? 'md:border-r border-white/5' : ''}`}>
-              <div className="flex items-center justify-center gap-2 text-blue-500 mb-2">
-                {stat.icon}
-                <span className="text-2xl font-black text-white tracking-tighter">{stat.val}</span>
-              </div>
-              <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{stat.label}</div>
-            </div>
-          ))}
+        <div className="relative group">
+          <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-cyan-500/20 rounded-[3rem] blur-xl opacity-50 group-hover:opacity-100 transition duration-1000"></div>
+          
+          <div className="relative grid grid-cols-2 md:grid-cols-4 gap-4 p-8 bg-[#0a0f1d]/80 border border-white/10 rounded-[2.5rem] backdrop-blur-3xl shadow-2xl overflow-hidden">
+            
+            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-blue-500/10 to-transparent -translate-x-full animate-[shimmer_3s_infinite]" />
+
+            {[
+              { label: "JD Accuracy", val: "98.4%", icon: <ShieldCheck size={18}/> },
+              { label: "Avg. Response", val: "< 12h", icon: <Activity size={18}/> },
+              { label: "Candidate Sat.", val: "4.8/5", icon: <Star size={18}/> },
+              { label: "Digital Footprint", val: "AI-V", icon: <Globe size={18}/> }
+            ].map((stat, i) => (
+              <motion.div 
+                key={i} 
+                whileHover={{ y: -5 }}
+                className={`relative px-0 py-0 text-center transition-all duration-300 ${i !== 3 ? 'md:border-r border-white/10' : ''}`}
+              >
+                <div className="flex flex-col items-center justify-center">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-blue-400 drop-shadow-[0_0_8px_rgba(59,130,246,0.5)]">
+                      {stat.icon}
+                    </span>
+                    <span className="text-[14px] md:text-[20px] font-black text-white tracking-tighter tabular-nums">
+                      {stat.val}
+                    </span>
+                  </div>
+                  <div className="text-[6px] md:text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] opacity-80 group-hover:text-blue-300 transition-colors">
+                    {stat.label}
+                  </div>
+                </div>
+                
+                <div className="absolute top-0 right-4 w-1 h-1 rounded-full bg-blue-500/40 animate-pulse" />
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
+      
+      <style jsx global>{`
+        @keyframes scan {
+          0% { transform: translateY(-100%); opacity: 0; }
+          50% { opacity: 1; }
+          100% { transform: translateY(400px); opacity: 0; }
+        }
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+      `}</style>
     </section>
   );
 }

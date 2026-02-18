@@ -4,16 +4,15 @@ import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { 
-  Cpu, 
-  LineChart, 
   Globe, 
-  Terminal, 
   ShieldCheck, 
   Github, 
   Linkedin, 
   Zap,
   Activity,
-  Layers
+  Layers,
+  Code2, 
+  Cpu
 } from 'lucide-react';
 
 const FEATURES = [
@@ -22,21 +21,24 @@ const FEATURES = [
     description: "Our Manee Pro 2.5 engine generates real-time MCQ challenges for every skill update, ensuring instant verification.",
     icon: <Cpu className="w-6 h-6 text-blue-400" />,
     stats: "10-Quest Cycles",
-    border: "border-blue-500/30"
+    border: "border-blue-500/30",
+    bgImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop"
   },
   {
     title: "360° Report Generation",
     description: "Synchronize deep metrics from all active projects into a single, employer-ready technical dossier.",
     icon: <Layers className="w-6 h-6 text-indigo-400" />,
     stats: "Live Data Feed",
-    border: "border-indigo-500/30"
+    border: "border-indigo-500/30",
+    bgImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
   },
   {
     title: "Ecosystem Integration",
     description: "One-click synchronization with GitHub and LinkedIn to maintain a living, breathing career profile.",
     icon: <Globe className="w-6 h-6 text-cyan-400" />,
     stats: "Real-time Sync",
-    border: "border-cyan-500/30"
+    border: "border-cyan-500/30",
+    bgImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"
   }
 ];
 
@@ -90,7 +92,7 @@ const FeatureSpaceBackground = () => {
 
         if (x >= 0 && x < canvas.width && y >= 0 && y < canvas.height) {
           if (star.text) {
-            ctx.font = `${Math.floor(size * 12)}px Arial font-bold`;
+            ctx.font = `${Math.floor(size * 12)}px Arial`;
             ctx.fillStyle = `rgba(59, 130, 246, ${opacity * 0.5})`; 
             ctx.fillText(star.text, x, y);
           } else {
@@ -144,21 +146,33 @@ export default function Features() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.1 }}
-              className={`group relative bg-white/[0.02] py-8 px-8 rounded-[2.5rem] border ${feature.border} backdrop-blur-3xl hover:bg-white/[0.05] transition-all duration-500 overflow-hidden`}
+              className={`group relative bg-slate-900/40 py-8 px-8 rounded-[2.5rem] border ${feature.border} backdrop-blur-3xl hover:bg-slate-900/60 transition-all duration-500 overflow-hidden min-h-[300px] flex flex-col justify-end`}
             >
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500/20 to-transparent -translate-y-full group-hover:animate-[scan_4s_linear_infinite]" />
-              
-              <div className="flex justify-between items-start mb-10">
-                <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-blue-500/50 transition-colors">
-                  {feature.icon}
-                </div>
-                <span className="text-[10px] font-black text-blue-400 uppercase tracking-widest bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">
-                  {feature.stats}
-                </span>
+              <div className="absolute inset-0 z-0 opacity-20 group-hover:opacity-40 transition-opacity duration-500">
+                <Image 
+                  src={feature.bgImage} 
+                  alt={feature.title}
+                  fill
+                  className="object-cover mix-blend-overlay"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/40 to-transparent" />
               </div>
 
-              <h3 className="text-2xl font-black text-white mb-4 tracking-tight uppercase">{feature.title}</h3>
-              <p className="text-slate-400 leading-relaxed text-sl mb-10 font-medium">{feature.description}</p>
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500/40 to-transparent -translate-y-full group-hover:animate-[scan_4s_linear_infinite] z-10" />
+              
+              <div className="relative z-20">
+                <div className="flex justify-between items-start mb-10">
+                  <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-blue-500/50 transition-colors">
+                    {feature.icon}
+                  </div>
+                  <span className="text-[10px] font-black text-blue-400 uppercase tracking-widest bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">
+                    {feature.stats}
+                  </span>
+                </div>
+
+                <h3 className="text-2xl font-black text-white mb-4 tracking-tight uppercase">{feature.title}</h3>
+                <p className="text-slate-300 leading-relaxed text-sm md:text-[16px] mb-4 font-medium">{feature.description}</p>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -195,9 +209,15 @@ export default function Features() {
               </div>
             </div>
 
-            <div className="relative h-[350px] flex items-center justify-center bg-black/20 rounded-[3rem] border border-white/5 backdrop-blur-md">
-              <div className="absolute inset-0 opacity-10" 
-                   style={{ backgroundImage: 'radial-gradient(#3b82f6 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
+            <div className="relative h-[350px] flex items-center justify-center bg-black/20 rounded-[3rem] border border-white/5 backdrop-blur-md overflow-hidden">
+              <div className="absolute inset-0 opacity-10">
+                  <Image 
+                    src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop" 
+                    alt="Security Tech"
+                    fill
+                    className="object-cover"
+                  />
+              </div>
               
               <div className="relative z-10 flex items-center gap-8 md:gap-16">
                 <div className="flex flex-col gap-8">
@@ -213,7 +233,7 @@ export default function Features() {
                   <div className="absolute -inset-8 bg-blue-600/20 blur-[50px] rounded-full animate-pulse" />
                   <div className="w-28 h-28 md:w-36 md:h-36 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-[2.5rem] p-[2px] shadow-[0_0_50px_rgba(37,99,235,0.4)]">
                     <div className="w-full h-full bg-[#020617] rounded-[2.3rem] flex items-center justify-center relative overflow-hidden">
-                       <Cpu size={48} className="text-white relative z-10 animate-pulse" />
+                       <Code2 size={48} className="text-white relative z-10 animate-pulse" />
                        <div className="absolute top-0 left-0 w-full h-[3px] bg-blue-400 shadow-[0_0_20px_#3b82f6] animate-[scan_2s_ease-in-out_infinite]" />
                     </div>
                   </div>
@@ -232,6 +252,19 @@ export default function Features() {
           </div>
         </motion.div>
       </div>
+
+      <style jsx global>{`
+        @keyframes scan {
+          0% { transform: translateY(-100%); opacity: 0; }
+          50% { opacity: 1; }
+          100% { transform: translateY(400px); opacity: 0; }
+        }
+        @keyframes flow {
+          0% { transform: translateX(0) scale(1); opacity: 0; }
+          50% { opacity: 1; }
+          100% { transform: translateX(150px) scale(0.5); opacity: 0; }
+        }
+      `}</style>
     </section>
   );
 }

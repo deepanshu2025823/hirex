@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Logo from '@/components/logo'; 
 
 const NAV_LINKS = [
   { name: 'Features', href: '#features' },
@@ -48,27 +49,9 @@ export default function Navbar() {
       >
         <div className="flex justify-between items-center h-16">
           
-          <Link 
-            href="/" 
-            className="flex items-center gap-2 group"
-            aria-label="HireX Home"
-          >
-            <div className="relative w-8 h-8 flex-shrink-0">
-              <Image 
-                src="https://www.careerlabconsulting.com/favicon.ico"
-                alt="CLC Logo"
-                fill
-                sizes="32px"
-                priority
-                className="object-contain"
-              />
-            </div>
-            <span className={`text-xl font-black tracking-tighter transition-colors ${
-              scrolled ? 'text-[#0f172a]' : 'text-white' 
-            }`}>
-              HireX
-            </span>
-          </Link>
+          <div className="mb-0">
+            <Logo isSticky={scrolled} />
+          </div>
 
           <div className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map((link) => (

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ShieldCheck, Home, Search, User, Briefcase, Activity, Zap, Terminal } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Logo from '@/components/logo';
 
 const FOOTER_LINKS = {
   Platform: [
@@ -45,17 +46,9 @@ export default function Footer() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-12 mb-20">
             
             <div className="col-span-2 lg:col-span-4">
-              <Link href="/" className="flex items-center gap-2 mb-8">
-                <div className="relative w-10 h-10 bg-white rounded-xl flex items-center justify-center p-2 shadow-2xl">
-                  <Image 
-                    src="https://www.careerlabconsulting.com/favicon.ico"
-                    alt="CLC Logo"
-                    fill
-                    className="object-contain p-2"
-                  />
-                </div>
-                <span className="text-2xl font-black tracking-tighter text-white uppercase italic">HireX</span>
-              </Link>
+              <div className="mb-8">
+                <Logo />
+              </div>
               <p className="text-slate-400 text-sm font-medium leading-relaxed mb-10 max-w-xs uppercase tracking-tight">
                 Autonomous Verification Node v.2.5 <br />
                 <span className="text-blue-500 font-black italic underline decoration-blue-500/30">Manee Pro 2.5 Native Sync</span>
@@ -65,7 +58,13 @@ export default function Footer() {
                 {SOCIAL_ICONS.map((social) => (
                   <Link key={social.name} href="#" className={`w-12 h-12 ${social.color} rounded-2xl border border-white/5 flex items-center justify-center transition-transform hover:scale-110 active:scale-95`}>
                     <div className="relative w-6 h-6">
-                      <Image src={social.src} alt={social.name} fill className="object-contain" />
+                      <Image 
+                        src={social.src} 
+                        alt={social.name} 
+                        fill 
+                        sizes="24px"
+                        className="object-contain" 
+                      />
                     </div>
                   </Link>
                 ))}
@@ -134,7 +133,7 @@ export default function Footer() {
 
           <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[9px] font-black uppercase tracking-[0.2em] text-slate-500">
             <div className="flex items-center gap-6">
-              <span className="italic">© {currentYear} CLC HireX</span>
+              <span className="italic">© 2015 - {currentYear} CLC HireX</span>
               <div className="flex items-center gap-2 text-blue-500">
                 <ShieldCheck size={12} />
                 <span>Protocol: X-Secure</span>
@@ -161,6 +160,7 @@ export default function Footer() {
         <Link 
           href="https://wa.me/918368436412" 
           target="_blank"
+          rel="noopener noreferrer" 
           className="relative -translate-y-8 w-16 h-16"
         >
           <div className="absolute inset-0 bg-green-500/20 rounded-full animate-ping" />
