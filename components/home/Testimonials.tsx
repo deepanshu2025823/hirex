@@ -64,7 +64,7 @@ export default function Testimonials() {
   const googleReviewLink = "https://www.google.com/search?q=career+lab+consulting#lrd=0x390ce5b02b6f908d:0x3f9da383c70066be,3,,,,";
 
   return (
-    <section className="relative py-32 bg-[#020617] overflow-hidden border-t border-white/5">
+    <section className="relative py-15 bg-[#020617] overflow-hidden border-t border-white/5">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-blue-600/10 blur-[150px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

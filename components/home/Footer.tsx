@@ -41,7 +41,7 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="relative bg-[#020617] border-t border-white/5 pt-24 pb-32 md:pb-12 overflow-hidden">
+      <footer className="relative bg-[#020617] border-t border-white/5 pt-15 pb-15 md:pb-12 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-12 mb-20">
             
@@ -57,7 +57,7 @@ export default function Footer() {
               <div className="flex flex-wrap gap-4">
                 {SOCIAL_ICONS.map((social) => (
                   <Link key={social.name} href="#" className={`w-12 h-12 ${social.color} rounded-2xl border border-white/5 flex items-center justify-center transition-transform hover:scale-110 active:scale-95`}>
-                    <div className="relative w-6 h-6">
+                    <div className="relative w-8 h-8">
                       <Image 
                         src={social.src} 
                         alt={social.name} 
@@ -140,7 +140,7 @@ export default function Footer() {
               </div>
             </div>
             <div>
-              AI Dev by <span className="text-white underline underline-offset-4 decoration-blue-500">Deepanshu Joshi</span>
+              AI Dev by <span className="text-white underline underline-offset-4 decoration-blue-500">Career Lab Consulting</span>
             </div>
           </div>
         </div>

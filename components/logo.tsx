@@ -51,9 +51,9 @@ export default function Logo({ isSticky = false }: { isSticky?: boolean }) {
 
         <div className="flex items-center gap-1.5 mt-1.5">
             <span className="relative hidden sm:flex h-1.5 w-1.5">
-  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
-  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span>
-</span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span>
+            </span>
             
             <span className={`hidden sm:block text-[10px] font-mono font-bold uppercase tracking-widest leading-none group-hover:text-blue-500 transition-colors ${isSticky ? 'text-slate-500' : 'text-slate-400'}`}>
               Your gateway to jobs and top talent
