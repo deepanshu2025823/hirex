@@ -63,36 +63,21 @@ const SpaceBackground = () => {
 
         if (x >= 0 && x < width && y >= 0 && y < height) {
           if (star.text) {
-            const baseFontSize = 14; 
+            const baseFontSize = 16; 
             const dynamicFontSize = Math.floor(size * baseFontSize);
             
             ctx.font = `900 ${dynamicFontSize}px sans-serif`;
-            const textMetrics = ctx.measureText(star.text);
-            
-            const paddingX = dynamicFontSize * 1.2;
-            const paddingY = dynamicFontSize * 0.8;
-            const rectW = textMetrics.width + paddingX;
-            const rectH = dynamicFontSize + paddingY;
-
-            ctx.shadowBlur = 10;
-            ctx.shadowColor = `rgba(59, 130, 246, ${opacity * 0.4})`;
-
-            ctx.globalAlpha = opacity;
-            ctx.fillStyle = "#FFFFFF";
-            ctx.beginPath();
-            ctx.roundRect(x - rectW / 2, y - rectH / 2, rectW, rectH, dynamicFontSize / 2);
-            ctx.fill();
-
-            ctx.strokeStyle = `rgba(59, 130, 246, ${opacity * 0.5})`;
-            ctx.lineWidth = 1;
-            ctx.stroke();
-
-            ctx.shadowBlur = 0; 
-            ctx.fillStyle = "#020617";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
+
+            ctx.shadowBlur = 8;
+            ctx.shadowColor = "rgba(255, 255, 255, 0.5)";
+            
+            ctx.globalAlpha = opacity;
+            ctx.fillStyle = "#FFFFFF";
             ctx.fillText(star.text, x, y);
             
+            ctx.shadowBlur = 0;
             ctx.globalAlpha = 1.0; 
           } else {
             ctx.beginPath();
@@ -142,7 +127,7 @@ export default function Hero() {
       >
         <div className="inline-flex items-center gap-2 bg-white px-4 py-2.5 rounded-full text-blue-600 shadow-2xl shadow-blue-500/30 mb-10 border border-blue-100">
           <Zap size={16} fill="currentColor" className="animate-pulse" />
-          <span className="tracking-widest uppercase md:text-[11px] text-[8px] font-black tracking-tighter">AI-Autonomous Job Matching Engine</span>
+          <span className="tracking-widest uppercase md:text-[11px] text-[8px] font-black">AI-Autonomous Job Matching Engine</span>
         </div>
 
         <h1 className="text-4xl md:text-7xl font-black text-white tracking-tighter mb-8 md:leading-[1.2] leading-[1.1] uppercase italic">
