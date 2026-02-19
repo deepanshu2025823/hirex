@@ -125,21 +125,21 @@ export default function Hero() {
         transition={{ duration: 0.8 }}
         className="relative z-10 max-w-7xl mx-auto text-center mt-12 md:mt-0"
       >
-        <div className="inline-flex items-center gap-2 bg-white px-4 py-2.5 rounded-full text-blue-600 shadow-2xl shadow-blue-500/30 mb-10 border border-blue-100">
+        <div className="inline-flex items-center gap-2 bg-white px-4 py-2.5 rounded-full text-blue-600 shadow-2xl shadow-blue-500/30 mb-4 border border-blue-100">
           <Zap size={16} fill="currentColor" className="animate-pulse" />
           <span className="tracking-widest uppercase md:text-[11px] text-[8px] font-black">AI-Autonomous Job Matching Engine</span>
         </div>
 
-        <h1 className="text-4xl md:text-7xl font-black text-white tracking-tighter mb-8 md:leading-[1.2] leading-[1.1] uppercase italic">
+        <h1 className="text-4xl md:text-5xl font-black text-white tracking-tighter mb-4 md:leading-[1.2] leading-[1.1] uppercase italic">
           Your Career, <span className="text-blue-500 italic">Quantified.</span> <br />
           Hiring, <span className="text-indigo-400">Automated.</span>
         </h1>
 
-        <p className="text-[16px] md:text-2xl text-slate-400 max-w-3xl mx-auto mb-14 leading-relaxed font-medium">
+        <p className="text-[14px] md:text-[18px] text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
           The first 360-degree career ecosystem syncing <span className="text-white font-bold underline decoration-blue-500/50">GitHub</span>, <span className="text-white font-bold underline decoration-indigo-500/50">LinkedIn</span>, and AI assessments.
         </p>
 
-        <div className="flex flex-col sm:flex-row justify-center gap-5 mb-24">
+        <div className="flex flex-col sm:flex-row justify-center gap-5 mb-15">
           <button className="flex items-center justify-center gap-3 bg-blue-600 text-white px-10 py-5 rounded-[1.5rem] text-sm font-black uppercase tracking-widest hover:bg-blue-500 transition-all shadow-xl shadow-blue-600/30 active:scale-95">
             Join as Candidate <ArrowRight size={18} />
           </button>
@@ -148,7 +148,7 @@ export default function Hero() {
           </button>
         </div>
         
-        <div className="relative mb-14">
+        <div className="relative mb-10">
           <div className="absolute inset-0 flex items-center" aria-hidden="true">
             <div className="w-full border-t border-white/10 opacity-30"></div>
           </div>
